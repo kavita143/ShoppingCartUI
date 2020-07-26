@@ -1,0 +1,68 @@
+
+CREATE TABLE categories (
+  Category_ID INT NOT NULL,
+  Category_Name VARCHAR(100) NULL,
+  PRIMARY KEY (Category_ID));
+
+
+CREATE TABLE vendors (
+  Vendor_ID INT NOT NULL ,
+  Vendor_name VARCHAR(100) NULL,
+  Vendor_Address VARCHAR(100) NULL,
+  Category_ID INT NULL,
+  PRIMARY KEY (Vendor_ID), 
+  FOREIGN KEY (Category_ID)
+    REFERENCES categories (Category_ID)
+    );
+	
+	
+
+INSERT INTO categories VALUES (1, 'Clothing');
+INSERT INTO categories VALUES (2, 'Footwear');
+INSERT INTO categories VALUES (3, 'Toys and Games');
+INSERT INTO categories VALUES (4, 'Electronics');
+INSERT INTO categories VALUES (5, 'Covid-19 Essentials');
+
+
+INSERT INTO vendors VALUES (1, 'Joy Global', 'Vysya road Banglore', 1);
+INSERT INTO vendors VALUES (2, 'Expo Associates', '#608 Kalyan Nagar Banglore', 3);
+INSERT INTO vendors VALUES (3, 'Cloudtail India', ' HRBR Layout Banglore', 2);
+INSERT INTO vendors VALUES (4, 'Big World', 'Indira Nagar Banglore', 2);
+INSERT INTO vendors VALUES (5, 'Cart2India', 'Near Brigade Residency Banglore', 1);
+
+
+
+  CREATE TABLE product_list (
+  Product_ID INT NOT NULL ,
+  Product_Name VARCHAR(45) NULL,
+  Description VARCHAR(200) NULL,
+  Image_URL VARCHAR(200) NULL,
+  Brand_Name VARCHAR(45) NULL,
+  Price INT NULL,
+  No_Of_Units INT NULL,
+  Discount VARCHAR(10) NULL,
+  product_size VARCHAR(10) NULL,
+  Category_ID INT NULL,
+  Vendor_ID INT NULL,
+  PRIMARY KEY (Product_ID),
+  FOREIGN KEY (Category_ID)
+  REFERENCES categories (Category_ID),
+  FOREIGN KEY (Vendor_ID)
+  REFERENCES vendors (Vendor_ID)
+  );
+
+INSERT INTO product_list VALUES (10, 'Face Mask','Long Face Shield that covers complete face.',
+								 'https://adn-static1.nykaa.com/nykdesignstudio-images/tr:w-550,/pub/media/catalog/product/t/b/tbmm036_1.jpg?rnd=20200526195200',
+								 'Nyka',200,10,'5%','M',5,1);
+								 
+INSERT INTO product_list VALUES (11, 'Footwear','GINGER Embellished Open-Toe Flats',								 
+								 'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/10443696/2019/10/29/3131bec6-4d01-4c74-8f88-87fdf108e6221572342902779-Catwalk-Women-Green-Embellished-Open-Toe-Flats-5961572342901-1.jpg',
+								  'Ginger',3000,10,'5%','M',2,4);
+								  
+INSERT INTO product_list VALUES (12, 'Kidswear','Kids dress of good quality',								 
+							      'https://cdn.fcglcdn.com/brainbees/images/products/438x531/3326019a.jpg',
+								 'Ginger',1000,10,'5%','M',1,1);
+
+
+								 
+								 
